@@ -13,7 +13,8 @@ SRCS	= srcs/main.c \
 		  srcs/get_arguments/check_input_data.c \
 		  srcs/get_arguments/compare_character.c \
 		  srcs/get_arguments/ga_errors.c \
-		  srcs/get_arguments/get_array_from_input.c
+		  srcs/get_arguments/get_array_from_input.c \
+		  srcs/init_data.c
 
 OBJS	= $(SRCS:.c=.o)
 

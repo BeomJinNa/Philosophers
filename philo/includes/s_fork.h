@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   s_args.h                                           :+:      :+:    :+:   */
+/*   s_fork.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/22 13:54:41 by bena              #+#    #+#             */
-/*   Updated: 2023/06/22 21:58:03 by bena             ###   ########.fr       */
+/*   Created: 2023/06/22 21:29:28 by bena              #+#    #+#             */
+/*   Updated: 2023/06/22 21:33:57 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef S_ARGS_H
-# define S_ARGS_H
+#ifndef S_FORK_H
+# define S_FORK_H
 
-typedef struct s_args
+# include <pthread.h>
+
+typedef struct s_fork
 {
-	int	number_of_philosophers;
-	int	time_to_die;
-	int	time_to_eat;
-	int	time_to_sleep;
-	int	number_of_times_each_philosopher_must_eat;
-}		t_args;
+	int				index;
+	int				owner;
+	pthread_mutex_t	mutex;
+}					t_fork;
 #endif
