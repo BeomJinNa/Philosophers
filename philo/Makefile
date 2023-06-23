@@ -18,6 +18,8 @@ SRCS	= srcs/main.c \
 		  srcs/print_error.c \
 		  srcs/run_simulation.c \
 		  srcs/run_simulation/init_threads.c \
+		  srcs/run_simulation/release_threads.c \
+		  srcs/run_simulation/run_loop.c \
 		  srcs/run_simulation/run_thread.c \
 		  srcs/utils/get_elapsed_time.c
 

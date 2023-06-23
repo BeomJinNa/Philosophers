@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run_thread.h                                       :+:      :+:    :+:   */
+/*   release_threads.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/23 20:54:28 by bena              #+#    #+#             */
-/*   Updated: 2023/06/23 22:47:59 by bena             ###   ########.fr       */
+/*   Created: 2023/06/23 23:20:11 by bena              #+#    #+#             */
+/*   Updated: 2023/06/23 23:25:56 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RUN_THREAD_H
-# define RUN_THREAD_H
+#include "release_threads.h"
 
-# include <unistd.h>
-# include "s_stat.h"
+int	release_threads(int index, t_stat *stat, int rt_errno)
+{
+	int	i;
 
-int	get_elapsed_time(int init);
-#endif
+	stat->terminate_threads = rt_errno;
+	i = -1;
+	while (++i < index)
+		pthread_detach(stat->philo[index].tid);
+	return (rt_errno);
+}

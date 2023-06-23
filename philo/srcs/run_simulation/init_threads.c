@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 17:25:31 by bena              #+#    #+#             */
-/*   Updated: 2023/06/23 21:27:20 by bena             ###   ########.fr       */
+/*   Updated: 2023/06/23 23:27:21 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,23 +28,12 @@ int	init_threads(t_stat *stat)
 		}
 		if (pthread_create(&stat->philo[i].tid, NULL,
 				run_thread, &stat->philo[i]))
-			return (release_threads(i, stat));
+			return (release_threads(i, stat, M_ERROR_THREAD_ALLOC));
 		if (i + 1 < stat->total_num)
 			if (pthread_create(&stat->philo[i + 1].tid, NULL,
 					run_thread, &stat->philo[i + 1]))
-				return (release_threads(i + 1, stat));
+				return (release_threads(i + 1, stat, M_ERROR_THREAD_ALLOC));
 		i += 2;
 	}
 	return (0);
-}
-
-int	release_threads(int index, t_stat *stat)
-{
-	int	i;
-
-	stat->terminate_threads = 1;
-	i = -1;
-	while (++i < index)
-		pthread_detach(stat->philo[index].tid);
-	return (M_ERROR_THREAD_ALLOC);
 }

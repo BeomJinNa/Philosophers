@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run_thread.h                                       :+:      :+:    :+:   */
+/*   run_loop.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/23 20:54:28 by bena              #+#    #+#             */
-/*   Updated: 2023/06/23 22:47:59 by bena             ###   ########.fr       */
+/*   Created: 2023/06/23 22:36:51 by bena              #+#    #+#             */
+/*   Updated: 2023/06/23 22:50:07 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RUN_THREAD_H
-# define RUN_THREAD_H
+#ifndef RUN_LOOP_H
+# define RUN_LOOP_H
 
 # include <unistd.h>
 # include "s_stat.h"
-
-int	get_elapsed_time(int init);
 #endif
