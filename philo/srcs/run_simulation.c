@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   s_philo.h                                          :+:      :+:    :+:   */
+/*   run_simulation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/22 21:04:16 by bena              #+#    #+#             */
-/*   Updated: 2023/06/22 22:19:47 by bena             ###   ########.fr       */
+/*   Created: 2023/06/23 16:22:02 by bena              #+#    #+#             */
+/*   Updated: 2023/06/23 21:46:48 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef S_PHILO_H
-# define S_PHILO_H
+#include "run_simulation.h"
 
-# include "s_fork.h"
-
-typedef struct s_philo
+int	run_simulation(t_stat *stat, int *philo_errno)
 {
-	int		index;
-	int		time_to_die;
-	int		time_to_eat;
-	int		time_to_sleep;
-	int		goal;
-	int		count_of_eatting;
-	t_fork	*left;
-	t_fork	*right;
-}			t_philo;
-#endif
+	int	time;
+
+	time = get_elapsed_time(0);
+	//create threads
+	*philo_errno = init_threads(stat);
+	if (*philo_errno)
+		return (*philo_errno);
+	//threads are created after here
+	//run_loop
+	release_threads(stat->total_num, stat);
+	return (0);
+}

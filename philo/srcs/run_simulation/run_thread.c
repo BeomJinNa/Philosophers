@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_arguments.h                                    :+:      :+:    :+:   */
+/*   run_thread.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/22 16:06:33 by bena              #+#    #+#             */
-/*   Updated: 2023/06/23 19:58:50 by bena             ###   ########.fr       */
+/*   Created: 2023/06/23 20:42:16 by bena              #+#    #+#             */
+/*   Updated: 2023/06/23 22:06:06 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_ARGUMENTS_H
-# define GET_ARGUMENTS_H
+#include "run_thread.h"
 
-int		get_arguments(int *output_array, int output_array_size,
-			int ac, char **av);
-char	*ga_strerr(int code);
-int		ga_parsing_error(int ga_errno);
-#endif
+void	*run_thread(void *arg)
+{
+	t_philo	*info = (t_philo *)arg;
+
+	(void)info; // TEMP (For Compilation)
+	return (NULL);
+}

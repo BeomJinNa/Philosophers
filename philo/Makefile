@@ -14,7 +14,12 @@ SRCS	= srcs/main.c \
 		  srcs/get_arguments/compare_character.c \
 		  srcs/get_arguments/ga_errors.c \
 		  srcs/get_arguments/get_array_from_input.c \
-		  srcs/init_data.c
+		  srcs/init_data.c \
+		  srcs/print_error.c \
+		  srcs/run_simulation.c \
+		  srcs/run_simulation/init_threads.c \
+		  srcs/run_simulation/run_thread.c \
+		  srcs/utils/get_elapsed_time.c
 
 OBJS	= $(SRCS:.c=.o)
 

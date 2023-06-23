@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 14:31:44 by bena              #+#    #+#             */
-/*   Updated: 2023/06/22 22:36:46 by bena             ###   ########.fr       */
+/*   Updated: 2023/06/23 21:49:57 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,22 @@ int	main(int ac, char **av)
 {
 	t_stat	stat;
 	t_args	args;
-	int		ga_errno;
+	int		philo_errno;
 	int		temp_args[5];
 
 	if (ac != 5 && ac != 6)
 		return (wrong_arg_numbers());
 	temp_args[4] = -1;
-	ga_errno = get_arguments(temp_args, 5, ac, av);
-	if (ga_errno < 0)
-		return (argument_error(ga_errno));
+	philo_errno = get_arguments(temp_args, 5, ac, av);
+	if (philo_errno < 0)
+		return (ga_parsing_error(philo_errno));
 	set_arguments(&args, temp_args);
-	init_data(&stat, &args);
+	if (init_data(&stat, &args) || get_elapsed_time(1) < 0)
+		return (print_error(M_ERROR_DATA_INIT, &stat));
+	if (run_simulation(&stat, &philo_errno))
+		return (print_error(philo_errno, &stat));
+	free(stat.philo);
+	free(stat.fork);
 	return (0);
 }
 
@@ -39,30 +44,5 @@ static int	wrong_arg_numbers(void)
 		"<time_to_eat>",
 		"<time_to_sleep>",
 		"[<number_of_times_each_philosoper_must_eat>]");
-	return (-1);
-}
-
-static int	argument_error(int ga_errno)
-{
-	const char *const	str = ga_strerr(ga_errno);
-	const char			*ptr;
-
-	if (str == NULL)
-		return (-1);
-	ptr = str;
-	while (*ptr)
-		ptr++;
-	write(2, "Error: ", 7);
-	write(2, str, ptr - str);
-	write(2, "\n", 1);
-	return (-1);
-}
-
-static void	set_arguments(t_args *args, int *array)
-{
-	args->number_of_philosophers = array[0];
-	args->time_to_die = array[1];
-	args->time_to_eat = array[2];
-	args->time_to_sleep = array[3];
-	args->number_of_times_each_philosopher_must_eat = array[4];
+	return (0);
 }

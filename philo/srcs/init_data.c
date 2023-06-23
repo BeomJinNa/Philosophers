@@ -6,16 +6,26 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 22:07:05 by bena              #+#    #+#             */
-/*   Updated: 2023/06/22 22:35:28 by bena             ###   ########.fr       */
+/*   Updated: 2023/06/23 18:28:21 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init_data.h"
 
+void	set_arguments(t_args *args, int *array)
+{
+	args->number_of_philosophers = array[0];
+	args->time_to_die = array[1];
+	args->time_to_eat = array[2];
+	args->time_to_sleep = array[3];
+	args->number_of_times_each_philosopher_must_eat = array[4];
+}
+
 int	init_data(t_stat *stat, t_args *args)
 {
 	int	i;
 
+	memset(stat, 0, sizeof(t_stat));
 	stat->total_num = args->number_of_philosophers;
 	stat->philo = (t_philo *)malloc(sizeof(t_philo) * (stat->total_num + 1));
 	if (stat->philo == NULL)
@@ -38,6 +48,7 @@ int	init_data(t_stat *stat, t_args *args)
 static void	set_data(int index, t_stat *stat, t_args *args)
 {
 	stat->fork[index].index = index + 1;
+	stat->philo[index].stat = stat;
 	stat->philo[index].index = index + 1;
 	stat->philo[index].time_to_die = args->time_to_die;
 	stat->philo[index].time_to_eat = args->time_to_eat;

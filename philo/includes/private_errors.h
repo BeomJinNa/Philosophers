@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   s_fork.h                                           :+:      :+:    :+:   */
+/*   private_errors.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/22 21:29:28 by bena              #+#    #+#             */
-/*   Updated: 2023/06/22 21:33:57 by bena             ###   ########.fr       */
+/*   Created: 2023/06/23 18:53:35 by bena              #+#    #+#             */
+/*   Updated: 2023/06/23 19:49:07 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef S_FORK_H
-# define S_FORK_H
+#ifndef PRIVATE_ERRORS_H
+# define PRIVATE_ERRORS_H
 
-# include <pthread.h>
+# include "e_private_errors.h"
 
-typedef struct s_fork
-{
-	int				index;
-	int				owner;
-	pthread_mutex_t	mutex;
-}					t_fork;
+int	print_error(int private_errno, t_stat *stat);
 #endif
