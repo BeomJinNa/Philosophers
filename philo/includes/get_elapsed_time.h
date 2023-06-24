@@ -6,12 +6,12 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 17:48:59 by bena              #+#    #+#             */
-/*   Updated: 2023/06/23 17:49:17 by bena             ###   ########.fr       */
+/*   Updated: 2023/06/24 19:16:33 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_ELAPSED_TIME
-# define GET_ELAPSED_TIME
+#ifndef GET_ELAPSED_TIME_H
+# define GET_ELAPSED_TIME_H
 
 # include <sys/time.h>
 #endif

@@ -17,10 +17,14 @@ SRCS	= srcs/main.c \
 		  srcs/init_data.c \
 		  srcs/print_error.c \
 		  srcs/run_simulation.c \
+		  srcs/run_simulation/destroy_mutexes.c \
+		  srcs/run_simulation/get_terminated_therads.c \
+		  srcs/run_simulation/init_mutexes.c \
 		  srcs/run_simulation/init_threads.c \
 		  srcs/run_simulation/release_threads.c \
 		  srcs/run_simulation/run_loop.c \
 		  srcs/run_simulation/run_thread.c \
+		  srcs/run_simulation/say_terminated.c \
 		  srcs/utils/get_elapsed_time.c
 
 OBJS	= $(SRCS:.c=.o)

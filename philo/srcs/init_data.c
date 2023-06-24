@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 22:07:05 by bena              #+#    #+#             */
-/*   Updated: 2023/06/23 18:28:21 by bena             ###   ########.fr       */
+/*   Updated: 2023/06/24 19:06:18 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,10 @@ int	init_data(t_stat *stat, t_args *args)
 
 	memset(stat, 0, sizeof(t_stat));
 	stat->total_num = args->number_of_philosophers;
-	stat->philo = (t_philo *)malloc(sizeof(t_philo) * (stat->total_num + 1));
-	if (stat->philo == NULL)
+	if (alloc_philo(stat))
 		return (-1);
-	memset(stat->philo, 0, sizeof(t_philo) * (stat->total_num + 1));
-	stat->fork = (t_fork *)malloc(sizeof(t_fork) * (stat->total_num + 1));
-	if (stat->fork == NULL)
-	{
-		free(stat->philo);
+	if (alloc_fork(stat))
 		return (-1);
-	}
-	memset(stat->fork, 0, sizeof(t_fork) * (stat->total_num + 1));
 	i = -1;
 	while (++i < args->number_of_philosophers)
 		set_data(i, stat, args);
@@ -56,4 +49,25 @@ static void	set_data(int index, t_stat *stat, t_args *args)
 	stat->philo[index].goal = args->number_of_times_each_philosopher_must_eat;
 	stat->philo[index].left = stat->fork + index;
 	stat->philo[index].right = stat->fork + index + 1;
+}
+
+static int	alloc_philo(t_stat *stat)
+{
+	stat->philo = (t_philo *)malloc(sizeof(t_philo) * (stat->total_num + 1));
+	if (stat->philo == NULL)
+		return (-1);
+	memset(stat->philo, 0, sizeof(t_philo) * (stat->total_num + 1));
+	return (0);
+}
+
+static int	alloc_fork(t_stat *stat)
+{
+	stat->fork = (t_fork *)malloc(sizeof(t_fork) * (stat->total_num + 1));
+	if (stat->fork == NULL)
+	{
+		free(stat->philo);
+		return (-1);
+	}
+	memset(stat->fork, 0, sizeof(t_fork) * (stat->total_num + 1));
+	return (0);
 }

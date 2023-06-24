@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 19:29:48 by bena              #+#    #+#             */
-/*   Updated: 2023/06/23 20:51:27 by bena             ###   ########.fr       */
+/*   Updated: 2023/06/24 19:35:13 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@ typedef struct s_fork	t_fork;
 
 struct s_stat
 {
-	int		total_num;
-	int		terminate_threads;
-	t_philo	*philo;
-	t_fork	*fork;
+	int				total_num;
+	int				finished_num;
+	int				terminate_threads;
+	pthread_mutex_t	termination;
+	t_philo			*philo;
+	t_fork			*fork;
 };
 
 struct s_philo

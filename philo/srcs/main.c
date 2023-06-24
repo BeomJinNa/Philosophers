@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 14:31:44 by bena              #+#    #+#             */
-/*   Updated: 2023/06/23 23:18:10 by bena             ###   ########.fr       */
+/*   Updated: 2023/06/24 19:15:25 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ int	main(int ac, char **av)
 	philo_errno = get_arguments(temp_args, 5, ac, av);
 	if (philo_errno < 0)
 		return (ga_parsing_error(philo_errno));
+	if (philo_errno != 4 && philo_errno != 5)
+		return (wrong_arg_numbers());
+	if (do_any_wrong_values_exist(temp_args))
+		return (0);
 	set_arguments(&args, temp_args);
 	if (init_data(&stat, &args) || get_elapsed_time(1) < 0)
 		return (print_error(M_ERROR_DATA_INIT, &stat));
@@ -45,4 +49,19 @@ static int	wrong_arg_numbers(void)
 		"<time_to_sleep>",
 		"[<number_of_times_each_philosoper_must_eat>]");
 	return (0);
+}
+
+static int	do_any_wrong_values_exist(int *array)
+{
+	if (array[0] <= 0)
+		printf("philo: the number of philosophers must be more than 0.\n");
+	else if (array[1] < 0)
+		printf("philo: time to die can't be negative.\n");
+	else if (array[2] < 0)
+		printf("philo: time to eat can't be negative.\n");
+	else if (array[3] < 0)
+		printf("philo: time to sleep can't be negative.\n");
+	else
+		return (0);
+	return (1);
 }
