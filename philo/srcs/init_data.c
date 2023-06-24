@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 22:07:05 by bena              #+#    #+#             */
-/*   Updated: 2023/06/24 19:06:18 by bena             ###   ########.fr       */
+/*   Updated: 2023/06/24 20:26:07 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,21 +53,21 @@ static void	set_data(int index, t_stat *stat, t_args *args)
 
 static int	alloc_philo(t_stat *stat)
 {
-	stat->philo = (t_philo *)malloc(sizeof(t_philo) * (stat->total_num + 1));
+	stat->philo = (t_philo *)malloc(sizeof(t_philo) * stat->total_num);
 	if (stat->philo == NULL)
 		return (-1);
-	memset(stat->philo, 0, sizeof(t_philo) * (stat->total_num + 1));
+	memset(stat->philo, 0, sizeof(t_philo) * stat->total_num);
 	return (0);
 }
 
 static int	alloc_fork(t_stat *stat)
 {
-	stat->fork = (t_fork *)malloc(sizeof(t_fork) * (stat->total_num + 1));
+	stat->fork = (t_fork *)malloc(sizeof(t_fork) * stat->total_num);
 	if (stat->fork == NULL)
 	{
 		free(stat->philo);
 		return (-1);
 	}
-	memset(stat->fork, 0, sizeof(t_fork) * (stat->total_num + 1));
+	memset(stat->fork, 0, sizeof(t_fork) * stat->total_num);
 	return (0);
 }

@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run_loop.h                                         :+:      :+:    :+:   */
+/*   die.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/23 22:36:51 by bena              #+#    #+#             */
-/*   Updated: 2023/06/23 22:50:07 by bena             ###   ########.fr       */
+/*   Created: 2023/06/24 21:58:09 by bena              #+#    #+#             */
+/*   Updated: 2023/06/24 22:32:25 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RUN_LOOP_H
-# define RUN_LOOP_H
+#include <stdio.h>
+#include "s_stat.h"
 
-# include <unistd.h>
-# include "s_stat.h"
-#endif
+int		get_elapsed_time(int init);
+int		get_simulation_status(t_stat *stat);
+void	set_simulation_status(t_stat *stat, int value);
+
+int	die(t_philo *info)
+{
+	const int	time = get_elapsed_time(0);
+
+	if (get_simulation_status(info->stat))
+		return (1);
+	set_simulation_status(info->stat, 1);
+	printf("%d %d died\n", time, info->index);
+	return (1);
+}

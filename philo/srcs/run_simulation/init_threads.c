@@ -6,11 +6,16 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 17:25:31 by bena              #+#    #+#             */
-/*   Updated: 2023/06/23 23:27:21 by bena             ###   ########.fr       */
+/*   Updated: 2023/06/24 22:11:42 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_threads.h"
+#include "s_stat.h"
+#include "e_private_errors.h"
+
+void	*run_thread(void *info);
+int		get_elapsed_time(int init);
+int		release_threads(int index, t_stat *stat, int rt_errno);
 
 int	init_threads(t_stat *stat)
 {
@@ -21,10 +26,12 @@ int	init_threads(t_stat *stat)
 	while (i < stat->total_num)
 	{
 		stat->philo[i].time_to_start = time + 101;
+		stat->philo[i].last_meal_time = time;
 		if (i + 1 < stat->total_num)
 		{
 			stat->philo[i].time_to_start = time + 100;
 			stat->philo[i + 1].time_to_start = time + 101;
+			stat->philo[i + 1].last_meal_time = time;
 		}
 		if (pthread_create(&stat->philo[i].tid, NULL,
 				run_thread, &stat->philo[i]))

@@ -6,11 +6,11 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 15:31:10 by bena              #+#    #+#             */
-/*   Updated: 2023/06/23 17:49:25 by bena             ###   ########.fr       */
+/*   Updated: 2023/06/24 22:16:57 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_elapsed_time.h"
+#include <sys/time.h>
 
 int	get_elapsed_time(int init)
 {

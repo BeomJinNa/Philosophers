@@ -6,34 +6,45 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 20:42:16 by bena              #+#    #+#             */
-/*   Updated: 2023/06/24 19:56:47 by bena             ###   ########.fr       */
+/*   Updated: 2023/06/24 22:27:28 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "run_thread.h"
 
-//중간에 프로세스 종료 명령을 받았을 경우, 하던 작업을 중단하도록 설계
-//중단하거나 동작이 끝난 경우, 메인 스레드에 스레드가 종료되었음을 송신
 void	*run_thread(void *arg)
 {
-	t_philo	*info = (t_philo *)arg;
+	t_philo *const	info = (t_philo *)arg;
 
+	while (get_elapsed_time(0) < info->time_to_start)
+		usleep(250);
 	while (1)
 	{
-		thread_actions(info);
-		(void)info;
+		if (thread_actions(info))
+			break ;
 		usleep(1000);
 	}
+	say_terminated(info->stat);
 	return (NULL);
 }
-/*
-static void	thread_actions(t_philo *info)
-{
-	int	time;
 
-	time = get_elapsed_time(0);
-	if (time < info->time_to_start)
-		return ;
-	take_the_fork(info->right
+static int	thread_actions(t_philo *info)
+{
+	const int	time = get_elapsed_time(0);
+
+	if (get_simulation_status(info->stat))
+		return (1);
+	if (time - info->last_meal_time >= info->time_to_die)
+		return (die(info));
+	if (info->status == M_PHILO_STAT_THINKING)
+		take_right_fork(info);
+	if (info->status == M_PHILO_STAT_1FORK)
+		take_left_fork(info);
+	if (info->status == M_PHILO_STAT_EATING
+		&& time - info->last_meal_time >= info->time_to_eat)
+		fall_a_sleep(info);
+	if (info->status == M_PHILO_STAT_SLEEPING
+		&& time - info->last_sleep_time >= info->time_to_sleep)
+		wake_up(info);
+	return (0);
 }
-*/

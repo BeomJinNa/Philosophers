@@ -6,11 +6,15 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 17:25:31 by bena              #+#    #+#             */
-/*   Updated: 2023/06/24 19:50:07 by bena             ###   ########.fr       */
+/*   Updated: 2023/06/24 22:11:27 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_mutexes.h"
+#include "s_stat.h"
+#include "e_private_errors.h"
+
+int			destroy_mutexes(int index, t_stat *stat, int rt_errno);
+static int	init_const_mutexes(t_stat *stat);
 
 int	init_mutexes(t_stat *stat)
 {
@@ -27,8 +31,8 @@ int	init_mutexes(t_stat *stat)
 
 static int	init_const_mutexes(t_stat *stat)
 {
-	if (pthread_mutex_init(&stat->termination, NULL))
-		pthread_mutex_destory(&stat->termination);
+	if (pthread_mutex_init(&stat->mutex_termination, NULL))
+		pthread_mutex_destroy(&stat->mutex_termination);
 	else
 		return (0);
 	return (1);

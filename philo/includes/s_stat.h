@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 19:29:48 by bena              #+#    #+#             */
-/*   Updated: 2023/06/24 19:35:13 by bena             ###   ########.fr       */
+/*   Updated: 2023/06/24 22:02:03 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define S_STAT_H
 
 # include <pthread.h>
+# include "e_philo_status.h"
 
 typedef struct s_stat	t_stat;
 typedef struct s_philo	t_philo;
@@ -22,9 +23,10 @@ typedef struct s_fork	t_fork;
 struct s_stat
 {
 	int				total_num;
-	int				finished_num;
-	int				terminate_threads;
-	pthread_mutex_t	termination;
+	int				terminated_num;
+	int				status;
+	pthread_mutex_t	mutex_termination;
+	pthread_mutex_t	mutex_status;
 	t_philo			*philo;
 	t_fork			*fork;
 };
@@ -32,14 +34,17 @@ struct s_stat
 struct s_philo
 {
 	pthread_t	tid;
-	t_stat		*stat;
-	int			time_to_start;
 	int			index;
+	int			status;
+	int			last_meal_time;
+	int			last_sleep_time;
+	int			goal;
+	int			count_of_eatting;
+	int			time_to_start;
 	int			time_to_die;
 	int			time_to_eat;
 	int			time_to_sleep;
-	int			goal;
-	int			count_of_eatting;
+	t_stat		*stat;
 	t_fork		*left;
 	t_fork		*right;
 };

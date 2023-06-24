@@ -6,13 +6,14 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 16:36:31 by bena              #+#    #+#             */
-/*   Updated: 2023/06/24 20:10:14 by bena             ###   ########.fr       */
+/*   Updated: 2023/06/24 20:14:18 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RUN_SIMULATION_H
 # define RUN_SIMULATION_H
 
+# include <unistd.h>
 # include "s_stat.h"
 
 int	get_elapsed_time(int init);

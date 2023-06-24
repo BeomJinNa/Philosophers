@@ -1,17 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_elapsed_time.h                                 :+:      :+:    :+:   */
+/*   e_philo_status.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/23 17:48:59 by bena              #+#    #+#             */
-/*   Updated: 2023/06/24 19:16:33 by bena             ###   ########.fr       */
+/*   Created: 2023/06/24 21:25:33 by bena              #+#    #+#             */
+/*   Updated: 2023/06/24 21:52:42 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_ELAPSED_TIME_H
-# define GET_ELAPSED_TIME_H
+#ifndef E_PHILO_STATUS_H
+# define E_PHILO_STATUS_H
 
-# include <sys/time.h>
+enum e_philo_status
+{
+	M_PHILO_STAT_THINKING = 0,
+	M_PHILO_STAT_1FORK = 1,
+	M_PHILO_STAT_EATING = 2,
+	M_PHILO_STAT_SLEEPING = 3
+};
 #endif
