@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 21:58:09 by bena              #+#    #+#             */
-/*   Updated: 2023/06/25 20:14:59 by bena             ###   ########.fr       */
+/*   Updated: 2023/06/25 20:52:20 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	take_left_fork(t_philo *info)
 	}
 	pthread_mutex_unlock(&info->left->mutex);
 	printf("\033[1m%d \033[35m%d \033[32mis eating\033[0m\n",
-		time, info->index);
+		time - 100, info->index);
 	pthread_mutex_unlock(&info->stat->mutex_print);
 	info->status = M_PHILO_STAT_EATING;
 	info->count_of_eating++;
