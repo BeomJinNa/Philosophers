@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 19:29:48 by bena              #+#    #+#             */
-/*   Updated: 2023/06/25 19:02:31 by bena             ###   ########.fr       */
+/*   Updated: 2023/06/25 20:00:37 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ struct s_stat
 	pthread_mutex_t	mutex_status;
 	pthread_mutex_t	mutex_termination;
 	pthread_mutex_t	mutex_finished;
+	pthread_mutex_t	mutex_print;
 	t_philo			*philo;
 	t_fork			*fork;
 };

@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 21:58:09 by bena              #+#    #+#             */
-/*   Updated: 2023/06/25 19:21:24 by bena             ###   ########.fr       */
+/*   Updated: 2023/06/25 20:15:21 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,24 @@ void	take_right_fork(t_philo *info)
 {
 	const int	time = get_elapsed_time(0);
 
+	pthread_mutex_lock(&info->stat->mutex_print);
 	if (get_simulation_status(info->stat))
+	{
+		pthread_mutex_unlock(&info->stat->mutex_print);
 		return ;
+	}
 	pthread_mutex_lock(&info->right->mutex);
 	if (info->right->owner == 0)
 		info->right->owner = info->index;
 	else
 	{
 		pthread_mutex_unlock(&info->right->mutex);
+		pthread_mutex_unlock(&info->stat->mutex_print);
 		return ;
 	}
 	pthread_mutex_unlock(&info->right->mutex);
 	printf("\033[1m%d \033[35m%d \033[33mhas taken a fork\033[0m\n",
 		time, info->index);
+	pthread_mutex_unlock(&info->stat->mutex_print);
 	info->status = M_PHILO_STAT_1FORK;
 }
