@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 20:42:16 by bena              #+#    #+#             */
-/*   Updated: 2023/06/24 22:27:28 by bena             ###   ########.fr       */
+/*   Updated: 2023/06/25 18:20:22 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ static int	thread_actions(t_philo *info)
 		return (1);
 	if (time - info->last_meal_time >= info->time_to_die)
 		return (die(info));
+	if (info->is_this_already_over == 0 && info->count_of_eating >= info->goal)
+		say_finished(info);
 	if (info->status == M_PHILO_STAT_THINKING)
 		take_right_fork(info);
 	if (info->status == M_PHILO_STAT_1FORK)

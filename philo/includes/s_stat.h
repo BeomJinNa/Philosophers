@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 19:29:48 by bena              #+#    #+#             */
-/*   Updated: 2023/06/24 22:02:03 by bena             ###   ########.fr       */
+/*   Updated: 2023/06/25 18:05:28 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,12 @@ typedef struct s_fork	t_fork;
 struct s_stat
 {
 	int				total_num;
-	int				terminated_num;
 	int				status;
-	pthread_mutex_t	mutex_termination;
+	int				terminated_num;
+	int				finished_num;
 	pthread_mutex_t	mutex_status;
+	pthread_mutex_t	mutex_termination;
+	pthread_mutex_t	mutex_finished;
 	t_philo			*philo;
 	t_fork			*fork;
 };
@@ -38,8 +40,9 @@ struct s_philo
 	int			status;
 	int			last_meal_time;
 	int			last_sleep_time;
+	int			count_of_eating;
 	int			goal;
-	int			count_of_eatting;
+	int			is_this_already_over;
 	int			time_to_start;
 	int			time_to_die;
 	int			time_to_eat;

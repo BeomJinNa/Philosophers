@@ -6,11 +6,18 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 22:07:05 by bena              #+#    #+#             */
-/*   Updated: 2023/06/24 20:26:07 by bena             ###   ########.fr       */
+/*   Updated: 2023/06/25 17:17:46 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_data.h"
+#include <stdlib.h>
+#include <string.h>
+#include "s_stat.h"
+#include "s_args.h"
+
+static void	set_data(int index, t_stat *stat, t_args *args);
+static int	alloc_philo(t_stat *stat);
+static int	alloc_fork(t_stat *stat);
 
 void	set_arguments(t_args *args, int *array)
 {
