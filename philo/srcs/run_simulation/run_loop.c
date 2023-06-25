@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 22:36:43 by bena              #+#    #+#             */
-/*   Updated: 2023/06/25 18:46:30 by bena             ###   ########.fr       */
+/*   Updated: 2023/06/25 21:48:14 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	run_loop(t_stat *stat)
 			set_simulation_status(stat, 1);
 		if (get_simulation_status(stat))
 			break ;
-		usleep(100);
+		usleep(250);
 	}
 	if (get_simulation_status(stat) < 0)
 		return (get_simulation_status(stat));

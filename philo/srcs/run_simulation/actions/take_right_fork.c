@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 21:58:09 by bena              #+#    #+#             */
-/*   Updated: 2023/06/25 20:52:25 by bena             ###   ########.fr       */
+/*   Updated: 2023/06/25 21:46:10 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	set_simulation_status(t_stat *stat, int value);
 
 void	take_right_fork(t_philo *info)
 {
-	const int	time = get_elapsed_time(0);
+	int	time;
 
 	pthread_mutex_lock(&info->stat->mutex_print);
 	if (get_simulation_status(info->stat))
@@ -37,6 +37,7 @@ void	take_right_fork(t_philo *info)
 		return ;
 	}
 	pthread_mutex_unlock(&info->right->mutex);
+	time = get_elapsed_time(0);
 	printf("\033[1m%d \033[35m%d \033[33mhas taken a fork\033[0m\n",
 		time - 100, info->index);
 	pthread_mutex_unlock(&info->stat->mutex_print);
