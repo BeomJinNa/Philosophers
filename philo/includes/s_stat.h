@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 19:29:48 by bena              #+#    #+#             */
-/*   Updated: 2023/06/25 18:05:28 by bena             ###   ########.fr       */
+/*   Updated: 2023/06/25 19:02:31 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ struct s_stat
 	int				status;
 	int				terminated_num;
 	int				finished_num;
+	int				delay;
 	pthread_mutex_t	mutex_status;
 	pthread_mutex_t	mutex_termination;
 	pthread_mutex_t	mutex_finished;

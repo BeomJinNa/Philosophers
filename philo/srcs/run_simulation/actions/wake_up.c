@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 21:58:09 by bena              #+#    #+#             */
-/*   Updated: 2023/06/24 22:44:57 by bena             ###   ########.fr       */
+/*   Updated: 2023/06/25 19:18:59 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	wake_up(t_philo *info)
 
 	if (get_simulation_status(info->stat))
 		return ;
-	printf("%d %d is thinking\n", time, info->index);
+	printf("\033[1m%d \033[35m%d \033[37mis thinking\033[0m\n",
+		time, info->index);
 	info->status = M_PHILO_STAT_THINKING;
 }

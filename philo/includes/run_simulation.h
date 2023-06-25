@@ -6,13 +6,14 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 17:28:20 by bena              #+#    #+#             */
-/*   Updated: 2023/06/25 17:28:43 by bena             ###   ########.fr       */
+/*   Updated: 2023/06/25 19:26:24 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RUN_SIMULATION_H
 # define RUN_SIMULATION_H
 
+# include <stdio.h>
 # include <unistd.h>
 # include "s_stat.h"
 

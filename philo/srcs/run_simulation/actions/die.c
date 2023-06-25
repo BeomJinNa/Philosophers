@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 21:58:09 by bena              #+#    #+#             */
-/*   Updated: 2023/06/24 22:32:25 by bena             ###   ########.fr       */
+/*   Updated: 2023/06/25 19:18:37 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ int	die(t_philo *info)
 	if (get_simulation_status(info->stat))
 		return (1);
 	set_simulation_status(info->stat, 1);
-	printf("%d %d died\n", time, info->index);
+	printf("\033[1m%d \033[35m%d \033[31mdied\033[0m\n", time, info->index);
 	return (1);
 }
