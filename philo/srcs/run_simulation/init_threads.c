@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 17:25:31 by bena              #+#    #+#             */
-/*   Updated: 2023/06/25 19:02:55 by bena             ###   ########.fr       */
+/*   Updated: 2023/06/25 19:41:55 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ int	init_threads(t_stat *stat)
 	while (i < stat->total_num)
 	{
 		stat->philo[i].time_to_start = time + 100 + stat->delay;
-		stat->philo[i].last_meal_time = time;
+		stat->philo[i].last_meal_time = time + 100;
 		if (i + 1 < stat->total_num)
 		{
 			stat->philo[i].time_to_start = time + 100;
 			stat->philo[i + 1].time_to_start = time + 100 + stat->delay;
-			stat->philo[i + 1].last_meal_time = time;
+			stat->philo[i + 1].last_meal_time = time + 100;
 		}
 		if (pthread_create(&stat->philo[i].tid, NULL,
 				run_thread, &stat->philo[i]))

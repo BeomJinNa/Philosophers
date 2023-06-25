@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 22:07:05 by bena              #+#    #+#             */
-/*   Updated: 2023/06/25 18:56:18 by bena             ###   ########.fr       */
+/*   Updated: 2023/06/25 19:43:37 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	init_data(t_stat *stat, t_args *args)
 
 	memset(stat, 0, sizeof(t_stat));
 	stat->total_num = args->number_of_philosophers;
-	stat->delay = args->time_to_eat / 2;
+	stat->delay = args->time_to_eat / 2 + 1;
 	if (alloc_philo(stat))
 		return (-1);
 	if (alloc_fork(stat))

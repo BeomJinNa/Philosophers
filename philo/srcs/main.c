@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 14:31:44 by bena              #+#    #+#             */
-/*   Updated: 2023/06/25 17:21:14 by bena             ###   ########.fr       */
+/*   Updated: 2023/06/25 19:39:09 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,13 @@ static int	wrong_arg_numbers(void)
 static int	do_any_wrong_values_exist(int *array)
 {
 	if (array[0] <= 0)
-		printf("philo: the number of philosophers must be more than 0.\n");
+		printf("philo: <the number of philosophers> must be more than 0.\n");
 	else if (array[1] < 0)
-		printf("philo: time to die can't be negative.\n");
+		printf("philo: <time to die> can't be negative.\n");
 	else if (array[2] < 0)
-		printf("philo: time to eat can't be negative.\n");
+		printf("philo: <time to eat> can't be negative.\n");
 	else if (array[3] < 0)
-		printf("philo: time to sleep can't be negative.\n");
+		printf("philo: <time to sleep> can't be negative.\n");
 	else
 		return (0);
 	return (1);
