@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 17:25:31 by bena              #+#    #+#             */
-/*   Updated: 2023/06/25 20:01:01 by bena             ###   ########.fr       */
+/*   Updated: 2023/07/30 17:41:22 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,21 @@ int	init_mutexes(t_stat *stat)
 
 static int	init_const_mutexes(t_stat *stat)
 {
-	if (pthread_mutex_init(&stat->mutex_termination, NULL))
-		pthread_mutex_destroy(&stat->mutex_termination);
+	if (pthread_mutex_init(&stat->mutex_status, NULL))
+		;
+	else if (pthread_mutex_init(&stat->mutex_termination, NULL))
+		pthread_mutex_destroy(&stat->mutex_status);
 	else if (pthread_mutex_init(&stat->mutex_finished, NULL))
-		pthread_mutex_destroy(&stat->mutex_finished);
+	{
+		pthread_mutex_destroy(&stat->mutex_status);
+		pthread_mutex_destroy(&stat->mutex_termination);
+	}
 	else if (pthread_mutex_init(&stat->mutex_print, NULL))
-		pthread_mutex_destroy(&stat->mutex_print);
+	{
+		pthread_mutex_destroy(&stat->mutex_status);
+		pthread_mutex_destroy(&stat->mutex_termination);
+		pthread_mutex_destroy(&stat->mutex_finished);
+	}
 	else
 		return (0);
 	return (1);

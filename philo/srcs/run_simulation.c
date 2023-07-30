@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 16:22:02 by bena              #+#    #+#             */
-/*   Updated: 2023/06/25 20:16:29 by bena             ###   ########.fr       */
+/*   Updated: 2023/07/30 18:05:34 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 int	run_simulation(t_stat *stat, int *philo_errno)
 {
-	int	time;
-
-	time = get_elapsed_time(0);
 	*philo_errno = init_mutexes(stat);
 	if (*philo_errno)
 		return (*philo_errno);
